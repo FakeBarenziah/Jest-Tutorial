@@ -1,8 +1,12 @@
 import { add, total } from "./App.js";
 
+const sum = jest.fn(add);
+
 // Unit tests for add function
 test("add function adds positive numbers", () => {
-  expect(add(2, 2)).toBe(4);
+  expect(sum(2, 2)).toBe(4);
+  expect(sum).toHaveBeenCalledTimes(1);
+  expect(sum).toHaveBeenLastCalledWith(2, 2);
 });
 
 test("add function works with negative numbers", () => {
